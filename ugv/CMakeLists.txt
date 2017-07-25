@@ -201,5 +201,7 @@ include_directories(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(ugv src/ugv.cpp src/RoboteqDevice.cpp)
+add_executable(randomcontrol src/randomcontrol.cpp)
 target_link_libraries(ugv ${catkin_LIBRARIES})
+target_link_libraries(randomcontrol ${catkin_LIBRARIES})
 # add_dependencies(ugv beginner_tutorials_generate_messages_cpp)
