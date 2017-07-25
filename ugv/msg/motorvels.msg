@@ -1,3 +1,3 @@
-uint16 left
-uint16 right
+int16 left
+int16 right
 

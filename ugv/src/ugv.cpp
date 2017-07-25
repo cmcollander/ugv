@@ -12,9 +12,9 @@ RoboteqDevice device;
 
 void motorCallback(const ugv::motorvels& msg)
 {
-  device.SetCommand(_GO, 1, (int)msg.left);
+  device.SetCommand(_GO, 2, (int)msg.left);
   sleepms(10); // Allow proper time between commands
-  device.SetCommand(_GO, 2, (int)msg.right);
+  device.SetCommand(_GO, 1, (int)msg.right);
 }
 
 int main(int argc, char **argv)
