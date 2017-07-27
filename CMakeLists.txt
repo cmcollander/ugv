@@ -199,9 +199,11 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+
 include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(ugv src/ugv.cpp src/RoboteqDevice.cpp)
 add_executable(randomcontrol src/randomcontrol.cpp)
+add_executable(keyboardcontrol src/keyboardcontrol.cpp)
 target_link_libraries(ugv ${catkin_LIBRARIES})
 target_link_libraries(randomcontrol ${catkin_LIBRARIES})
-# add_dependencies(ugv beginner_tutorials_generate_messages_cpp)
+target_link_libraries(keyboardcontrol ${catkin_LIBRARIES} ncurses)
