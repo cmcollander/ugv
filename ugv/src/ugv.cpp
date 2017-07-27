@@ -15,16 +15,17 @@ void motorCallback(const ugv::motorvels& msg)
   device.SetCommand(_GO, 2, (int)msg.left);
   sleepms(10); // Allow proper time between commands
   device.SetCommand(_GO, 1, (int)msg.right);
+  sleepms(10); // Allow proper time between commands
 }
 
 int main(int argc, char **argv)
 {
-  // Prepare our motor controller
+  // Prepare our motor controller (Loop until connection made)
   int status = device.Connect("/dev/ttyACM0");
-  if(status != RQ_SUCCESS)
+  while(status != RQ_SUCCESS)
   {
-    cout<<"Error connecting to device: "<<status<<"."<<endl;
-    return 1;
+    cout<<"Couldn't connect, reconnecting"<<endl;
+    status = device.Connect("/dev/ttyACM0");
   }
 
 
