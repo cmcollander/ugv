@@ -1,6 +1,6 @@
 <launch>
-    <node pkg="ugv" type="ugv" />
-    <node pkg="" type="static_transform_publisher">
-    	<param name="host" value="169.254.195.197">
+    <node pkg="ugv" type="ugv" name="ugv" />
+    <node pkg="lms1xx" type="LMS1xx_node" name="lidar">
+    	<param name="host" value="169.254.195.197" />
     </node>
 </launch>
