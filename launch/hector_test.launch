@@ -17,8 +17,9 @@
         <param name="map_multi_res_levels" value="2" />
     </node>
 
-    <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch"> </include>
+    <include file="/home/chris/catkin_ws/src/ugv/launch/geotiff_mapper.launch"> </include>
 
     <node pkg="tf" type="static_transform_publisher" name="base_to_laser_broadcaster" args="0 0 0 0 0 0 /base_link /laser 100"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/>    
 
 </launch>
