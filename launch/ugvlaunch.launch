@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="ugv" type="ugv" />
+    <node pkg="" type="static_transform_publisher">
+    	<param name="host" value="169.254.195.197">
+    </node>
+</launch>
