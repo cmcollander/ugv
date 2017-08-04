@@ -3,13 +3,15 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
-#define speed 100
-
 int main(int argc, char** argv) {
 	ros::init(argc, argv, "keyboardcontrol");
 	ros::NodeHandle n;
 	ros::Publisher pub = n.advertise<ugv::motorvels>("motors",1000);
 	ros::Rate loop_rate(1);
+
+	// Determine if a parameter is set for ugvmaxspeed. If not, set it to 250
+	int speed;
+	n.param<int>("ugvmaxspeed", speed, 250);	
 
 	// Prepare ncurses
 	initscr();
