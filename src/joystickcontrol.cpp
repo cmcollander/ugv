@@ -16,12 +16,12 @@ long map(float x, float in_min, float in_max, float out_min, float out_max)
 }
 
 void joystickCallback(sensor_msgs::Joy in) {
-	// Only repeat every 7th message
+	// Only repeat every 10th message
 	count++;
-	if(count>=7) {
-		count=0;
+	if(count<10) {
 		return;
 	}
+	count = 0;
 
 	// Create our new message (initially empty)
 	ugv::motorvels msg;
