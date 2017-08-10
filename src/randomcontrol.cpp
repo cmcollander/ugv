@@ -11,8 +11,8 @@ int main(int argc, char** argv) {
 	while(ros::ok()) { // Loop as long as ROS is running, or broken out of otherwise
 		ugv::motorvels msg; // Blank ugv/motorvels message
 		
-		msg.left = rand()%2001 - 1000; // Set the left motor value between -1000 and 1000
-		msg.right = rand()%2001 - 1000; // Set the right motor value between -1000 and 1000
+		msg.left = rand()%500 - 250; // Set the left motor value between -1000 and 1000
+		msg.right = rand()%500 - 250; // Set the right motor value between -1000 and 1000
 		
 		pub.publish(msg); // Publish our message
 		ros::spinOnce(); // Handle ROS

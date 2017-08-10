@@ -3,17 +3,10 @@
 <launch>
 	<include file="$(find ugv)/launch/hector.launch" />
 	<node
-		pkg="joy"
-		type="joy_node"
-		name="joy_node"
-		respawn="true"
-	/>
-	<node
 		pkg="ugv"
 		type="getCont.py"
 		name="controller"
 		respawn="true">
-		<param name="ugvmaxspeed" value="250" />
 	</node>
 
 </launch>

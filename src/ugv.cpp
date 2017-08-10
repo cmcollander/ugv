@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n; // Create a new node
 
-  ros::Subscriber sub = n.subscribe("motors", 1000, motorCallback); // Create a subscriber to the /motors topic, that has a 1000-count message queue, and upon receiving a message calls the above callback function
+  ros::Subscriber sub = n.subscribe("motors", 1, motorCallback); // Create a subscriber to the /motors topic, that has a 1-count message queue, and upon receiving a message calls the above callback function
 
   ros::spin(); // continously loop ROS (obtaining and processing messages in the process)
 
