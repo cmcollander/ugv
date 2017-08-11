@@ -12,14 +12,14 @@ private:
 	double eff[2];
 public:
 	UGV() {
-		hardware_interface::JointStateHandle stateA("A",&pos[0],&vel[0],&eff[0]);
-		hardware_interface::JointStateHandle stateB("B",&pos[1],&vel[1],&eff[1]);
+		hardware_interface::JointStateHandle stateA("Left",&pos[0],&vel[0],&eff[0]);
+		hardware_interface::JointStateHandle stateB("Left",&pos[1],&vel[1],&eff[1]);
 		jnt_state.registerHandle(stateA);
 		jnt_state.registerHandle(stateB);
 		reisterInterface(&jnt_state);
 
-		hardware_interface::JointHandle velA(jnt_state.getHandle("A"),&cmd[0]);
-		hardware_interface::JointHandle velB(jnt_state.getHandle("B"),&cmd[1]);
+		hardware_interface::JointHandle velA(jnt_state.getHandle("Right"),&cmd[0]);
+		hardware_interface::JointHandle velB(jnt_state.getHandle("Right"),&cmd[1]);
 		jnt_vel.registerHandle(velA);
 		jnt_vel.registerHandle(velB);
 		registerInterface(&jnt_vel);
