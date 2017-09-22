@@ -2,8 +2,14 @@
 #include <hardware_interface/joint_state_interface.h>
 #include <hardware_interface/robot_hw.h>
 
+#include "ugv/motorvels.h"
+#include "ugv/RoboteqDevice.h"
+#include "ugv/ErrorCodes.h"
+#include "ugv/Constants.h"
+
 class UGV : public hardware_interface::RobotHW {
 private:
+	RoboteqDevice device;
 	hardware_interface::JointStateInterface jnt_state;
 	hardware_interface::VelocityJointInterface jnt_vel;
 	double cmd[2];
@@ -29,22 +35,36 @@ public:
 		jnt_vel.registerHandle(velA);
 		jnt_vel.registerHandle(velB);
 		registerInterface(&jnt_vel);
+
+		// Prepare our motor controller (Loop until connection made)
+		int status = device.Connect("/dev/ttyACM0");
+		while(status != RQ_SUCCESS) {
+			status = device.Connect("/dev/ttyACM0");
+		}
 	}
 
 	// Functions to assist with ROS time-management
-	ros::Time getTime() const {return ros::Time::now();}
-    ros::Duration getPeriod() const {return ros::Duration(0.01);}
+	// ros::Time getTime() const {return ros::Time::now();}
+    // ros::Duration getPeriod() const {return ros::Duration(0.01);}
 
 	void read() {
-		// TODO: Determine pos, vel, and eff and place them into variables
-
+		// Determine pos, vel, and eff and place them into variables
+		// _ABSPEED returns RPM, we need Rads/Sec
+		vel[0] = device.GetValue(_ABSPEED,1)/9.5493;
+		vel[1] = device.GetValue(_ABSPEED,2)/9.5493;
+		pos[0] = 0; // I don't know if we need this...
+		pos[1] = 0; // I don't know if we need this...
+		eff[0] = device.GetValue(_MOTPWR,1);
+		eff[1] = device.GetValue(_MOTPWR,2);
 	}
 
 	void write() {
-		// TODO: Write 'cmd' out to the motor driver
-		pos[0] += vel[0]*getPeriod().toSec();
-		pos[1] += vel[1]*getPeriod().toSec();
-		vel[0] = cmd[0];
-		vel[1] = cmd[1];
+		// Write 'cmd' out to the motor driver
+		// cmd[] is in rads per second
+		// _MOTVEL takes in RPM
+		device.SetCommand(_MOTVEL,1,(int)(cmd[0]*9.5493));
+		sleepms(10);
+		device.SetCommand(_MOTVEL,2,(int)(cmd[1]*9.5493));
+		sleepms(10);
 	}
 };
