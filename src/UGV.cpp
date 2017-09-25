@@ -16,6 +16,7 @@ private:
 	double pos[2];
 	double vel[2];
 	double eff[2];
+	int* ret;
 public:
 	UGV() {
 		// Initialize all values to zero
@@ -44,18 +45,18 @@ public:
 	}
 
 	// Functions to assist with ROS time-management
-	// ros::Time getTime() const {return ros::Time::now();}
-    // ros::Duration getPeriod() const {return ros::Duration(0.01);}
+	ros::Time getTime() const {return ros::Time::now();}
+        ros::Duration getPeriod() const {return ros::Duration(0.01);}
 
 	void read() {
 		// Determine pos, vel, and eff and place them into variables
 		// _ABSPEED returns RPM, we need Rads/Sec
-		vel[0] = device.GetValue(_ABSPEED,1)/9.5493;
-		vel[1] = device.GetValue(_ABSPEED,2)/9.5493;
+		vel[0] = device.GetValue(_ABSPEED,1,ret)/9.5493;
+		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
 		pos[0] = 0; // I don't know if we need this...
 		pos[1] = 0; // I don't know if we need this...
-		eff[0] = device.GetValue(_MOTPWR,1);
-		eff[1] = device.GetValue(_MOTPWR,2);
+		eff[0] = device.GetValue(_MOTPWR,1,ret);
+		eff[1] = device.GetValue(_MOTPWR,2,ret);
 	}
 
 	void write() {
