@@ -16,7 +16,7 @@ private:
 	double pos[2];
 	double vel[2];
 	double eff[2];
-	int* ret;
+	int ret;
 public:
 	UGV() {
 		// Initialize all values to zero
