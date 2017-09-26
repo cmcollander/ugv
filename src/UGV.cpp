@@ -6,6 +6,7 @@
 #include "ugv/RoboteqDevice.h"
 #include "ugv/ErrorCodes.h"
 #include "ugv/Constants.h"
+#include <unistd.h>
 
 class UGV : public hardware_interface::RobotHW {
 private:
@@ -46,7 +47,7 @@ public:
 
 	// Functions to assist with ROS time-management
 	ros::Time getTime() const {return ros::Time::now();}
-        ros::Duration getPeriod() const {return ros::Duration(0.01);}
+        ros::Duration getPeriod() const {return ros::Duration(0.1);}
 
 	void read() {
 		// Determine pos, vel, and eff and place them into variables
@@ -62,10 +63,11 @@ public:
 	void write() {
 		// Write 'cmd' out to the motor driver
 		// cmd[] is in rads per second
-		// _MOTVEL takes in RPM
-		device.SetCommand(_MOTVEL,1,(int)(cmd[0]*9.5493));
-		sleepms(10);
-		device.SetCommand(_MOTVEL,2,(int)(cmd[1]*9.5493));
-		sleepms(10);
+		// _GO takes in a value from -1000 to 1000 linearly from -60RPM to 60RPM
+		usleep(10000);
+		device.SetCommand(_GO,1,(int)(cmd[0]*159.155));
+		usleep(10000);
+		device.SetCommand(_GO,2,(int)(cmd[1]*159.155));
+		usleep(10000);
 	}
 };
