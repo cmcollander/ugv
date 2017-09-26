@@ -1,9 +1,0 @@
- <launch>
-    <node pkg="controller_manager"
-         type="spawner"
-         args="diff_drive_controller/DiffDriveController"
-         name="controller_manager_Diff">
-    <param name="left_wheel" value="Left" />
-    <param name="right_wheel" value="Right" />
-    </node>
- </launch>

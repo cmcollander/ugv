@@ -8,8 +8,8 @@
 #include <sstream>
 #include <unistd.h>
 
-#include "RoboteqDevice.h"
-#include "ErrorCodes.h"
+#include "ugv/RoboteqDevice.h"
+#include "ugv/ErrorCodes.h"
 
 using namespace std;
 

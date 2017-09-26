@@ -23,8 +23,8 @@ public:
 		// Initialize all values to zero
 		cmd[0] = 0; cmd[1] = 0;
 		pos[0] = 0; pos[1] = 0;
-		vel[0] = 0; vel[0] = 0;
-		eff[0] = 0; eff[0] = 0;
+		vel[0] = 0; vel[1] = 0;
+		eff[0] = 0; eff[1] = 0;
 
 		// Create our joints and register them
 		hardware_interface::JointStateHandle stateA("Left",&pos[0],&vel[0],&eff[0]);
@@ -38,11 +38,8 @@ public:
 		jnt_vel.registerHandle(velB);
 		registerInterface(&jnt_vel);
 
-		// Prepare our motor controller (Loop until connection made)
+		// Prepare our motor controller
 		int status = device.Connect("/dev/ttyACM0");
-		while(status != RQ_SUCCESS) {
-			status = device.Connect("/dev/ttyACM0");
-		}
 	}
 
 	// Functions to assist with ROS time-management
@@ -53,18 +50,21 @@ public:
 		// Determine pos, vel, and eff and place them into variables
 		// _ABSPEED returns RPM, we need Rads/Sec
 		vel[0] = device.GetValue(_ABSPEED,1,ret)/9.5493;
+		usleep(10000);
 		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
+		usleep(10000);
 		pos[0] = 0; // I don't know if we need this...
 		pos[1] = 0; // I don't know if we need this...
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
+		usleep(10000);
 		eff[1] = device.GetValue(_MOTPWR,2,ret);
+		usleep(10000);
 	}
 
 	void write() {
 		// Write 'cmd' out to the motor driver
 		// cmd[] is in rads per second
 		// _GO takes in a value from -1000 to 1000 linearly from -60RPM to 60RPM
-		usleep(10000);
 		device.SetCommand(_GO,1,(int)(cmd[0]*159.155));
 		usleep(10000);
 		device.SetCommand(_GO,2,(int)(cmd[1]*159.155));
