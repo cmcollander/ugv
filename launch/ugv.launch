@@ -3,8 +3,8 @@
 	<param name = "/diff_drive_controller/right_wheel" type = "string" value = "Right" />
 	<rosparam param = "/diff_drive_controller/pose_covariance_diagonal">[0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0] </rosparam>
 	<rosparam param = "/diff_drive_controller/twist_covariance_diagonal">[0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]</rosparam>
-	<param name = "/diff_drive_controller/wheel_separation" value = "1.0" />
-	<param name = "/diff_drive_controller/wheel_radius" value = "0.25" />
+	<param name = "/diff_drive_controller/wheel_separation" value = "0.5461" />
+	<param name = "/diff_drive_controller/wheel_radius" value = "0.1651" />
 	<param name = "/diff_drive_controller/type" value = "diff_drive_controller/DiffDriveController" />
 
 	<node pkg = "controller_manager"
