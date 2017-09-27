@@ -7,7 +7,6 @@
 #include "ugv/ErrorCodes.h"
 #include "ugv/Constants.h"
 #include <unistd.h>
-#include <cmath.h>
 
 class UGV : public hardware_interface::RobotHW {
 private:
@@ -54,9 +53,9 @@ public:
 		usleep(10000);
 		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
 		usleep(10000);
-		pos[0] = M_PI * device.GetValue(_ABCNTR,1,ret)/60000;
+		pos[0] = 3.141592653589793 * device.GetValue(_ABCNTR,1,ret)/6000;
 		usleep(10000);
-		pos[1] += M_PI * device.GetValue(_ABCNTR,2,ret)/60000;
+		pos[1] = 3.141592653589793 * device.GetValue(_ABCNTR,2,ret)/6000;
 		usleep(10000)
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		usleep(10000);
