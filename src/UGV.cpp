@@ -53,8 +53,8 @@ public:
 		usleep(10000);
 		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
 		usleep(10000);
-		pos[0] = += vel[0];
-		pos[1] = += vel[1];
+		pos[0] += vel[0];
+		pos[1] += vel[1];
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		usleep(10000);
 		eff[1] = device.GetValue(_MOTPWR,2,ret);
