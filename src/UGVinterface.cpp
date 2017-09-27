@@ -8,11 +8,11 @@
 
 int main(int argc, char** argv) {
         ros::init(argc, argv, "UGV");
-        //ros::NodeHandle nh;
+        ros::NodeHandle nh;
 
         UGV ugv;
         ROS_WARN_STREAM("period: " << ugv.getPeriod().toSec());
-        controller_manager::ControllerManager cm(&ugv);
+        controller_manager::ControllerManager cm(&ugv,nh);
 
         ros::Rate rate(1.0 / ugv.getPeriod().toSec());
         ros::AsyncSpinner spinner(1);
