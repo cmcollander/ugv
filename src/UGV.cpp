@@ -56,7 +56,7 @@ public:
 		pos[0] = 3.141592653589793 * device.GetValue(_ABCNTR,1,ret)/6000;
 		usleep(10000);
 		pos[1] = 3.141592653589793 * device.GetValue(_ABCNTR,2,ret)/6000;
-		usleep(10000)
+		usleep(10000);
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		usleep(10000);
 		eff[1] = device.GetValue(_MOTPWR,2,ret);
