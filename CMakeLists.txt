@@ -10,6 +10,7 @@ project(ugv)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -100,7 +101,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  CATKIN_DEPENDS message_runtime
+  CATKIN_DEPENDS message_runtime tf
   INCLUDE_DIRS include
   LIBRARIES ugv
 #  CATKIN_DEPENDS roscpp rospy std_msgs
@@ -201,8 +202,8 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 # Executables down below!!!!!!!!!!!!!!!!!!
 
-#add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
-#target_link_libraries(UGVinterface ${catkin_LIBRARIES})
+add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
+target_link_libraries(UGVinterface ${catkin_LIBRARIES})
 
 #add_executable(controller src/controller.cpp)
 #target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
