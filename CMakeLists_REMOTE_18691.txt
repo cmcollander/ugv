@@ -8,12 +8,11 @@ project(ugv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-<<<<<<< HEAD
-=======
   #controller_manager
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
   roscpp
+  rospy
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,9 +49,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-# )
+add_message_files(
+  FILES
+  motorvels.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -69,10 +69,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -212,8 +212,4 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 #target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 #add_executable(laserbroadcaster src/laserbroadcaster.cpp)
-<<<<<<< HEAD
 #target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
-=======
-#target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
