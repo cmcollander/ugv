@@ -51,8 +51,8 @@ public:
 		// _ABSPEED returns RPM, we need Rads/Sec
 		vel[0] = device.GetValue(_ABSPEED,1,ret)/9.5493;
 		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
-		pos[0] = 3.141592653589793 * device.GetValue(_ABCNTR,1,ret)/6000;
-		pos[1] = 3.141592653589793 * device.GetValue(_ABCNTR,2,ret)/6000;
+		pos[0] = device.GetValue(_ABCNTR,1,ret)/(12000*3.14159265359);
+		pos[1] = device.GetValue(_ABCNTR,2,ret)/(12000*3.14159265359);
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		eff[1] = device.GetValue(_MOTPWR,2,ret);
 	}
