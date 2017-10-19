@@ -8,7 +8,7 @@ project(ugv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  controller_manager
+  #controller_manager
   roscpp
   rospy
   std_msgs
@@ -202,18 +202,14 @@ include_directories(
 
 
 include_directories(include ${catkin_INCLUDE_DIRS})
-#add_executable(ugv src/ugv.cpp src/RoboteqDevice.cpp)
-#add_executable(randomcontrol src/randomcontrol.cpp)
-#add_executable(keyboardcontrol src/keyboardcontrol.cpp)
-#add_executable(joystickcontrol src/joystickcontrol.cpp)
-add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
-#add_dependencies(ugv ugv_generate_messages_cpp)
-#add_dependencies(randomcontrol ugv_generate_messages_cpp)
-#add_dependencies(keyboardcontrol ugv_generate_messages_cpp)
-#add_dependencies(joystickcontrol ugv_generate_messages_cpp)
-#target_link_libraries(ugv ${catkin_LIBRARIES})
-#target_link_libraries(joystickcontrol ${catkin_LIBRARIES})
-#target_link_libraries(randomcontrol ${catkin_LIBRARIES})
-#target_link_libraries(keyboardcontrol ${catkin_LIBRARIES} ncurses)
-target_link_libraries(UGVinterface ${catkin_LIBRARIES})
 
+# Executables down below!!!!!!!!!!!!!!!!!!
+
+#add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
+#target_link_libraries(UGVinterface ${catkin_LIBRARIES})
+
+#add_executable(controller src/controller.cpp)
+#target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+#add_executable(laserbroadcaster src/laserbroadcaster.cpp)
+#target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
