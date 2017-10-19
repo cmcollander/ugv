@@ -8,6 +8,7 @@ project(ugv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  hardware_interface
   controller_manager
   roscpp
   std_msgs
