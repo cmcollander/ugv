@@ -8,11 +8,8 @@ project(ugv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  controller_manager
   roscpp
-  rospy
   std_msgs
-  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -49,10 +46,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  motorvels.msg
-)
+# add_message_files(
+#   FILES
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -69,10 +65,10 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs
+#)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -202,18 +198,14 @@ include_directories(
 
 
 include_directories(include ${catkin_INCLUDE_DIRS})
-#add_executable(ugv src/ugv.cpp src/RoboteqDevice.cpp)
-#add_executable(randomcontrol src/randomcontrol.cpp)
-#add_executable(keyboardcontrol src/keyboardcontrol.cpp)
-#add_executable(joystickcontrol src/joystickcontrol.cpp)
-add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
-#add_dependencies(ugv ugv_generate_messages_cpp)
-#add_dependencies(randomcontrol ugv_generate_messages_cpp)
-#add_dependencies(keyboardcontrol ugv_generate_messages_cpp)
-#add_dependencies(joystickcontrol ugv_generate_messages_cpp)
-#target_link_libraries(ugv ${catkin_LIBRARIES})
-#target_link_libraries(joystickcontrol ${catkin_LIBRARIES})
-#target_link_libraries(randomcontrol ${catkin_LIBRARIES})
-#target_link_libraries(keyboardcontrol ${catkin_LIBRARIES} ncurses)
-target_link_libraries(UGVinterface ${catkin_LIBRARIES})
 
+# Executables down below!!!!!!!!!!!!!!!!!!
+
+#add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
+#target_link_libraries(UGVinterface ${catkin_LIBRARIES})
+
+#add_executable(controller src/controller.cpp)
+#target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+#add_executable(laserbroadcaster src/laserbroadcaster.cpp)
+#target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})

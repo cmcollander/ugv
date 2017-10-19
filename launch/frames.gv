@@ -1,0 +1,8 @@
+digraph G {
+"base_link" -> "base_laser"[label="Broadcaster: /laserbroadcasternode\nAverage rate: 100.202 Hz\nMost recent transform: 1508340303.377 ( 0.003 sec old)\nBuffer length: 4.970 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /UGVinterface_node\nAverage rate: 12.387 Hz\nMost recent transform: 1508340303.313 ( 0.067 sec old)\nBuffer length: 4.844 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1508340303.380"[ shape=plaintext ] ;
+ }->"odom";
+}

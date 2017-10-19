@@ -1,12 +1,13 @@
 <launch>
 	<param name = "/diff_drive_controller/left_wheel" type = "string" value = "Left" />
 	<param name = "/diff_drive_controller/right_wheel" type = "string" value = "Right" />
-	<rosparam param = "/diff_drive_controller/pose_covariance_diagonal">[0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0] </rosparam>
-	<rosparam param = "/diff_drive_controller/twist_covariance_diagonal">[0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]</rosparam>
-	<param name = "/diff_drive_controller/wheel_separation" value = "0.5461" />
-	<param name = "/diff_drive_controller/wheel_radius" value = "0.1651" />
-	<param name = "/diff_drive_controller/type" value = "diff_drive_controller/DiffDriveController" />
-
+	<rosparam param = "/diff_drive_controller/pose_covariance_diagonal">[0.01,0.01,0.01,0.1,0.1,0.1]</rosparam>
+	<rosparam param = "/diff_drive_controller/twist_covariance_diagonal">[0.01,0.01,0.01,0.1,0.1,0.1]</rosparam>
+	<param name = "/diff_drive_controller/wheel_separation" type = "double" value = "0.56515" />
+	<param name = "/diff_drive_controller/wheel_radius" type = "double" value = "0.1651" />
+	<param name = "/diff_drive_controller/type" type = "string" value = "diff_drive_controller/DiffDriveController" />
+	<param name = "/diff_drive_controller/enable_odom_tf" type = "bool"  value = "true" />
+	<param name = "/diff_drive_controller/publish_cmd" type = "bool" value = "true" />
 	<node pkg = "controller_manager"
 		type = "spawner"
 		name = "controller_manager_spawner"
@@ -19,4 +20,13 @@
 	<node pkg="lms1xx" type="LMS1xx_node" name="lidar">
 		<param name="host" value="169.254.195.197" />
 	</node>
+
+	<node pkg = "ugv"
+		type = "laserbroadcaster"
+		name = "laserbroadcasternode" />
+
+	<node pkg = "topic_tools"
+		type = "relay"
+		name = "cmd_vel_relay"
+		args = "cmd_vel diff_drive_controller/cmd_vel" />
 </launch>
