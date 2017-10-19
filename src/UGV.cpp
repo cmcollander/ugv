@@ -50,25 +50,11 @@ public:
 		// Determine pos, vel, and eff and place them into variables
 		// _ABSPEED returns RPM, we need Rads/Sec
 		vel[0] = device.GetValue(_ABSPEED,1,ret)/9.5493;
-<<<<<<< HEAD
-		//usleep(10000);
-		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
-		//usleep(10000);
-		pos[0] = 3.141592653589793 * device.GetValue(_ABCNTR,1,ret)/6000;
-		//usleep(10000);
-		pos[1] = 3.141592653589793 * device.GetValue(_ABCNTR,2,ret)/6000;
-		//usleep(10000);
-		eff[0] = device.GetValue(_MOTPWR,1,ret);
-		//usleep(10000);
-		eff[1] = device.GetValue(_MOTPWR,2,ret);
-		//usleep(10000);
-=======
 		vel[1] = device.GetValue(_ABSPEED,2,ret)/9.5493;
 		pos[0] = 3.141592653589793 * device.GetValue(_ABCNTR,1,ret)/6000;
 		pos[1] = 3.141592653589793 * device.GetValue(_ABCNTR,2,ret)/6000;
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		eff[1] = device.GetValue(_MOTPWR,2,ret);
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
 	}
 
 	void write() {
@@ -76,12 +62,7 @@ public:
 		// cmd[] is in rads per second
 		// _GO takes in a value from -1000 to 1000 linearly from -60RPM to 60RPM
 		device.SetCommand(_GO,1,(int)(cmd[0]*159.155));
-<<<<<<< HEAD
-		//usleep(10000);
+
 		device.SetCommand(_GO,2,(int)(cmd[1]*159.155));
-		//usleep(10000);
-=======
-		device.SetCommand(_GO,2,(int)(cmd[1]*159.155));
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
 	}
 };
