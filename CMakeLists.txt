@@ -209,4 +209,3 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 #add_executable(laserbroadcaster src/laserbroadcaster.cpp)
 #target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
-#target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
