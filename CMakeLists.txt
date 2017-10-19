@@ -8,10 +8,6 @@ project(ugv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-<<<<<<< HEAD
-=======
-  #controller_manager
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
   roscpp
   std_msgs
 )
@@ -212,8 +208,5 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 #target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 #add_executable(laserbroadcaster src/laserbroadcaster.cpp)
-<<<<<<< HEAD
 #target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
-=======
 #target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
->>>>>>> 3bb681ba4474986eac0f869ea9e784d0d8291be4
