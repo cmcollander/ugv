@@ -44,15 +44,18 @@ public:
     asio::io_service io;
     asio::serial_port port(io);
     system::error_code ec;
-    port.open("/dev/ttyUSB0");
-    port.set_option(asio::serial_port_base::baud_rate(9600));
+    port.open("/dev/ttyACM0");
+    port.set_option(asio::serial_port_base::baud_rate(115200));
 
     while(nh_.ok()){
 
       
       asio::read(port, asio::buffer(&c,1), ec);
+      std::cout<<c<<","<<ec<<std::endl;
         if(!ec||ec==asio::error::eof){c=0;} // Do nothing
 
+      std::cout << "* Read in: " << c << std::endl;
+      
       if(c=='K') {
         usleep(2000);
         asio::read(port, asio::buffer(&x_c,1), ec);

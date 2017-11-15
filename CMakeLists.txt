@@ -204,8 +204,8 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 #add_executable(UGVinterface src/UGVinterface.cpp src/UGV.cpp src/RoboteqDevice.cpp)
 #target_link_libraries(UGVinterface ${catkin_LIBRARIES})
 
-#add_executable(controller src/controller.cpp)
-#target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_executable(controller src/controller.cpp)
+target_link_libraries(controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-add_executable(laserbroadcaster src/laserbroadcaster.cpp)
-target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
+#add_executable(laserbroadcaster src/laserbroadcaster.cpp)
+#target_link_libraries(laserbroadcaster ${catkin_LIBRARIES})
