@@ -1,0 +1,12 @@
+obstacle_range: 0.5
+raytrace_range: 0.5
+footprint: [[0.5207, -0.1143], [0.3937, -0.1143], [0.3937, -0.2413], [0.1905, -0.2286], [0.1905, -0.3302], [-0.1905, -0.3302], [-0.1905, -0.2286], [-0.3937, -0.2286], [-0.3937, 0.2286], [-0.1905, 0.2286], [-0.1905, 0.3302], [0.1905, 0.3302], [0.1905, 0.2286], [0.3937, 0.2413], [0.3937, 0.1143], [0.5207, 0.1143]]
+# robot_radius: 0.48  #treating it like its round for now
+inflation_radius: 0.1
+cost_scaling_factor: 5.0
+
+observation_sources: laser_scan_sensor
+
+laser_scan_sensor: {sensor_frame: /laser, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+
+
