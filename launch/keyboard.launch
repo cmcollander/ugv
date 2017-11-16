@@ -3,10 +3,7 @@
   <param name="scale_linear" value="0.3" type="double"/>
   <param name="scale_angular" value="0.8" type="double"/>
 
-  <node pkg="turtlesim" type="turtle_teleop_key" name="teleop" output="screen"/>
-
-  <node pkg = "topic_tools"
-		type = "relay"
-		name = "cmd_vel_relay1"
-		args = "turtle1/cmd_vel /cmd_vel" />
+  <node pkg="turtlesim" type="turtle_teleop_key" name="teleop" output="screen">
+    <remap from="turtle1/cmd_vel" to"/cmd_vel" />	  
+  </node>
 </launch>
