@@ -13,9 +13,9 @@
         <rosparam file="$(find ugv)/launch/config4/global_costmap_params.yaml" command="load" />
         <rosparam file="$(find ugv)/launch/config4/base_local_planner_params.yaml" command="load" />
         <rosparam file="$(find ugv)/launch/config4/move_base_params.yaml" command="load" />
-    </node>
+  </node>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find ugv)/launch/ugv.urdf" />
+  <param name="robot_description" textfile="$(find xacro)/xacro.py $(find ugv)/launch/ugv.urdf" />
   <param name="use_gui" value="false" />
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
