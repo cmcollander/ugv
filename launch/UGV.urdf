@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="UGV">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="gray">
+    <color rgba="0.75 0.75 0.75 1"/>
+  </material>
+
+  <!-- Placed, size verified, z offset currently okay, verify later -->
+  <link name="base_link">
+	<visual>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0.6 0.45 0.19685" />
+		</geometry>
+		<material name="gray" />
+	</visual>
+  </link>
+
+  <!-- Dimensions verified through datasheet -->
+  <link name="laser">
+	<visual>
+		<geometry>
+			<cylinder length="0.0408" radius="0.03785" />
+		</geometry>
+		<material name="black" />
+	</visual>
+  </link>
+
+  <!-- TODO: Measure Dimensions -->
+  <link name="left_wheel_link">
+  	<visual>
+  		<geometry>
+  			<cylinder length="0.0889" radius="0.155575" />
+  		</geometry>
+		<material name="black" />
+  	</visual>
+  </link>
+
+  <!-- TODO: Measure Dimensions -->
+  <link name="right_wheel_link">
+  	<visual>
+  		<geometry>
+  			<cylinder length="0.0889" radius="0.155575" />
+  		</geometry>
+		<material name="black" />
+  	</visual>
+  </link>
+
+  <!-- ..................JOINTS..................... -->
+
+  <!-- Placed, not verified -->
+  <joint name="base_to_laser" type="fixed">
+  	<parent link="base_link" />
+  	<child link="laser" />
+  	<origin xyz="0.1524 0 0.2032" rpy="0 0 3.14159265359" />
+  </joint>
+
+  <!-- TODO: Measure Dimensions -->
+  <joint name="left_wheel_joint" type="fixed">
+  	<parent link="base_link" />
+  	<child link="left_wheel_link" />
+  	<origin xyz="0 0.28 0" rpy="1.5708 0 0" />
+  </joint>
+
+  <!-- TODO: Measure Dimensions -->
+  <joint name="right_wheel_join" type="fixed">
+  	<parent link="base_link" />
+  	<child link="right_wheel_link" />
+  	<origin xyz="0 -0.28 0" rpy="1.5708 0 0" />
+  </joint>
+
+
+</robot>
