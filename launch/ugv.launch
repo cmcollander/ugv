@@ -20,15 +20,16 @@
 		<remap from="diff_drive_controller/cmd_vel" to="cmd_vel" />
 		<remap from="diff_drive_controller/odom" to="odom" />
 		<remap from="diff_drive_controller/cmd_vel_out" to="cmd_vel_out" />
+		<!-- Using default parameter settings. Place any necessary parameter changes here -->
 	</node>
 
+	<!-- We are using an rplidar. Change or remove this as necessary. -->
 	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
 
 	<param name="robot_description" command="cat $(find ugv)/launch/UGV.urdf" />
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />	
 
 	<!-- Filter Chain -->
-	<!-- param name="scan_to_scan_filter_chain" type="string" value="$(find ugv)/launch/laserconfig2.yaml" / -->
 	<node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filterchain">
 		<rosparam command="load" file="$(find ugv)/launch/laserconfig.yaml" />
 	</node>
