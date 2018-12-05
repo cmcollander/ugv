@@ -7,8 +7,8 @@ This ROS node is used with UGV.cpp for communication between /cmd_vel and /odom 
 ROS Parameters
 	/motor_controller_usb, which Linux device the Roboteq controller is registered as. Default: /dev/ttyACM0
         /ugv_vel_in_scalar, Default: (PI/3.0)
-        /ugv_vel_out_scalar, Default: (15.9155*0.33333333)
-        /ugv_odom_scalar, Default: (PI/(6000*4.20))
+        /ugv_vel_out_scalar, Default: (5.30516666)
+        /ugv_odom_scalar, Default: (PI/25200.0)
         
 Please ensure your controller has the following settings:
 * Left wheel connected to motor 1
