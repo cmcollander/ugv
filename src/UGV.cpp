@@ -31,7 +31,7 @@ private:
 		
 	int ret, initial_encoder[2];
 public:
-	UGV(std:string mcusb, double vel_in_scale, double vel_out_scale, double odom_scale) {
+	UGV(std::string mcusb, double vel_in_scale, double vel_out_scale, double odom_scale) {
 		// Pull in arguments
 		vel_in_value = vel_in_scale;
 		vel_out_value = vel_out_scale;
