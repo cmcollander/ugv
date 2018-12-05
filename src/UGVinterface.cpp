@@ -53,10 +53,10 @@ int main(int argc, char** argv) {
         double odomScalar;
         
 	// Obtain ROS parameters
-        n.param<std::string>("/motor_controller_usb", MotorControllerUSB, USB_DEFAULT);
-        n.param<double>("/ugv_vel_in_scalar", velInScalar, VEL_IN_DEFAULT);
-        n.param<double>("/ugv_vel_out_scalar", velOutScalar, VEL_OUT_DEFAULT);
-        n.param<double>("/ugv_odom_scalar", odomScalar, ODOM_DEFAULT);
+        nh.param<std::string>("/motor_controller_usb", MotorControllerUSB, USB_DEFAULT);
+        nh.param<double>("/ugv_vel_in_scalar", velInScalar, VEL_IN_DEFAULT);
+        nh.param<double>("/ugv_vel_out_scalar", velOutScalar, VEL_OUT_DEFAULT);
+        nh.param<double>("/ugv_odom_scalar", odomScalar, ODOM_DEFAULT);
 
         // Create our hardware_interface and connect it to the controller manager
         UGV ugv(MotorControllerUSB,velInScalar,velOutScalar,odomScalar);
