@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
         double velOutScalar;
         double odomScalar;
         
+	// Obtain ROS parameters
         n.param<std::string>("/motor_controller_usb", MotorControllerUSB, USB_DEFAULT);
         n.param<double>("/ugv_vel_in_scalar", velInScalar, VEL_IN_DEFAULT);
         n.param<double>("/ugv_vel_out_scalar", velOutScalar, VEL_OUT_DEFAULT);
@@ -61,11 +62,13 @@ int main(int argc, char** argv) {
         UGV ugv(MotorControllerUSB,velInScalar,velOutScalar,odomScalar);
         controller_manager::ControllerManager cm(&ugv,nh);
 
+	// ROS time handling
         ROS_WARN_STREAM("period: " << ugv.getPeriod().toSec());
         ros::Rate rate(1.0 / ugv.getPeriod().toSec());
         ros::AsyncSpinner spinner(1);
         spinner.start();
 
+	// Infinite loop for control calculation
         while(ros::ok()) {
                 ugv.read();
                 cm.update(ugv.getTime(), ugv.getPeriod());
