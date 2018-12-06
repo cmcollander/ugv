@@ -3,11 +3,13 @@
 	<param name = "/diff_drive_controller/right_wheel" type = "string" value = "Right" />
 	<rosparam param = "/diff_drive_controller/pose_covariance_diagonal">[0.01,0.01,0.01,0.1,0.1,0.1]</rosparam>
 	<rosparam param = "/diff_drive_controller/twist_covariance_diagonal">[0.01,0.01,0.01,0.1,0.1,0.1]</rosparam>
-	<param name = "/diff_drive_controller/wheel_separation" type = "double" value = "0.56134" />
-	<param name = "/diff_drive_controller/wheel_radius" type = "double" value = "0.1651" />
 	<param name = "/diff_drive_controller/type" type = "string" value = "diff_drive_controller/DiffDriveController" />
 	<param name = "/diff_drive_controller/enable_odom_tf" type = "bool"  value = "true" />
 	<param name = "/diff_drive_controller/publish_cmd" type = "bool" value = "true" />
+	
+	<!-- These values fit our robot. Adjust to match yours (in meters) -->
+	<param name = "/diff_drive_controller/wheel_separation" type = "double" value = "0.56134" />
+	<param name = "/diff_drive_controller/wheel_radius" type = "double" value = "0.1651" />
 	
 	<node pkg = "controller_manager"
 		type = "spawner"
@@ -20,17 +22,11 @@
 		<remap from="diff_drive_controller/cmd_vel" to="cmd_vel" />
 		<remap from="diff_drive_controller/odom" to="odom" />
 		<remap from="diff_drive_controller/cmd_vel_out" to="cmd_vel_out" />
+		<!-- Using default parameter settings. Place any necessary parameter changes here -->
 	</node>
 
-	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
-
+	<!-- Handle robot model and static transforms from URDF -->
 	<param name="robot_description" command="cat $(find ugv)/launch/UGV.urdf" />
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />	
-
-	<!-- Filter Chain -->
-	<!-- param name="scan_to_scan_filter_chain" type="string" value="$(find ugv)/launch/laserconfig2.yaml" / -->
-	<node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filterchain">
-		<rosparam command="load" file="$(find ugv)/launch/laserconfig.yaml" />
-	</node>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	
 </launch>
