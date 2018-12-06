@@ -19,6 +19,8 @@ Please ensure your controller has the following settings:
 * Max velocity for each wheel set to 60 RPM
 * Some parameters may need to be tuned and changed based on your build. Trial and error.
 
+Edit UGV.urdf to fit the dimensions of your robot
+
 After wheels respond to correct direction, speed can be adjusted through proper calculation (or trial and error)
 After wheels respond to correct speed, odom can be adjusted through proper calculation (or trial and error)
 
