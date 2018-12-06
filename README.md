@@ -1,8 +1,9 @@
-This is a ROS package used to an autonomous UGV for research at the University of Texas at Arlington.
+This is a ROS package used for an autonomous UGV for research at the University of Texas at Arlington.
 
-This was made for ROS-Kinetic (has not been tested for other versions)
+This package works on differential drive robots using a Roboteq motor controller. (Tested on HDC2460 and MDC2460)
+This package has been tested successfully with ROS Kinetic and Melodic
 
-This ROS node is used with UGV.cpp for communication between /cmd_vel and /odom to a Roboteq motor controller.
+TODO: At a later date, I will add the configuration file for my motor driver (MDC2460)
 
 ROS Parameters
 * /motor_controller_usb, which Linux device the Roboteq controller is registered as. Default: /dev/ttyACM0
@@ -17,8 +18,6 @@ Please ensure your controller has the following settings:
 * Encoder ticks per revolution properly calculated through gear ratio and encoder specs
 * Max velocity for each wheel set to 60 RPM
 * Some parameters may need to be tuned and changed based on your build. Trial and error.
-
-TODO: At a later date, I will add the configuration file for my motor driver (MDC2460)
 
 After wheels respond to correct direction, speed can be adjusted through proper calculation (or trial and error)
 After wheels respond to correct speed, odom can be adjusted through proper calculation (or trial and error)
