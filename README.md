@@ -19,8 +19,6 @@ Please ensure your controller has the following settings:
 * Max velocity for each wheel set to 60 RPM
 * Some parameters may need to be tuned and changed based on your build. Trial and error.
 
-Edit UGV.urdf to fit the dimensions of your robot
-
 Edit ugv.launch to have the correct wheel_separation and wheel_radius for your robot
 
 After wheels respond to correct direction, speed can be adjusted through proper calculation (or trial and error) of /ugv_vel_in_scalar or /ugv_vel_out_scalar
