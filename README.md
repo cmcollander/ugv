@@ -1,4 +1,5 @@
 This is a ROS package used for an autonomous UGV for research at the University of Texas at Arlington.
+This package only implements the motor control, /cmd_vel and /odom. For urdf, taranis controller, and lidar, install UDV package as well.
 
 This package works on differential drive robots using a Roboteq motor controller. (Tested on HDC2460 and MDC2460)
 This package has been tested successfully with ROS Kinetic and Melodic
@@ -25,7 +26,7 @@ After wheels respond to correct direction, speed can be adjusted through proper 
 
 After wheels respond to correct speed, odom can be adjusted through proper calculation (or trial and error, listed below) of /ugv_odom_scalar
 
-My current method for tuning odom:
+My current method for tuning odom (requires a lidar and transform tree):
 * Visualize in Rviz with /odom as global frame.
 * View lidar and transform tree
 * Rotate robot clockwise.
