@@ -24,9 +24,4 @@
 		<remap from="diff_drive_controller/cmd_vel_out" to="cmd_vel_out" />
 		<!-- Using default parameter settings. Place any necessary parameter changes here -->
 	</node>
-
-	<!-- Handle robot model and static transforms from URDF -->
-	<param name="robot_description" command="cat $(find ugv)/launch/UGV.urdf" />
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
-	
 </launch>
