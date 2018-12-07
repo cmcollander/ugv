@@ -77,9 +77,9 @@ public:
 		vel[1] = ret*vel_in_value;
 		
 		pos[0] = device.GetValue(_ABCNTR,1,ret);
-		pos[0] = ret-initial_encoder[1]*odom_value;
+		pos[0] = (ret-initial_encoder[0])*odom_value;
 		pos[1] = device.GetValue(_ABCNTR,2,ret);
-		pos[1] = ret-initial_encoder[1]*odom_value;
+		pos[1] = (ret-initial_encoder[1])*odom_value;
 		
 		eff[0] = device.GetValue(_MOTPWR,1,ret);
 		eff[0] = ret;
